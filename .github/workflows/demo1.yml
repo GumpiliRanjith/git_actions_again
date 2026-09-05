@@ -3,13 +3,11 @@ on: push
 
 jobs:
   ranjith:
-    env:
-      name: ranjith
     runs-on: ubuntu-latest
 
     steps:
       - name: Print Name
-        run: echo "Hello $name"
+        run: echo "Hello ${{ secrets.NAME}}"
 
   kumer:
     needs: ranjith
