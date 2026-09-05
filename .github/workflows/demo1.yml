@@ -1,14 +1,20 @@
 name: experi
-
 on: push
-
-env:
-  NAME: RANJITH
 
 jobs:
   ranjith:
+    env:
+      name: ranjith
     runs-on: ubuntu-latest
 
     steps:
       - name: Print Name
-        run: echo "Hello $NAME"
+        run: echo "Hello $name"
+
+  kumer:
+    needs: ranjith
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: kumer
+        run: echo "HELLO $name"
