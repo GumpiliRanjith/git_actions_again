@@ -8,6 +8,9 @@ jobs:
     steps:
       - name: took at repo
         run: echo "hello"
+      - name: create file
+        run: |
+          echo "hello world" > file.txt
 
   kumer:
     needs: ranjith
@@ -16,6 +19,11 @@ jobs:
     steps:
       - name: kumer
         run: echo "HELLO"
+      - name: download
+        uses: actions/artifact@v4
+        with:
+          name: file.txt content
+          path: file.txt
 
   ravi:
     needs: [ranjith,kumer]
@@ -30,5 +38,11 @@ jobs:
     steps:
       - name: welcome high
         run: echo "high"
+      - name: download
+        uses: actions/download-artifact@v4
+        with:
+          name: file.txt
+      - name: content
+        run: cat file.txt
 
 
