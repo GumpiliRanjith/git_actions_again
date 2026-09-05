@@ -1,25 +1,14 @@
-name: Events Demo 1
+name: experi
+
 on: push
+
+env:
+  NAME: RANJITH
+
 jobs:
-  deploy:
+  ranjith:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Output event data
-        run: echo "${{ toJSON(github.event) }}"
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: Install dependencies
-        run: npm ci
-      - name: Test code
-        run: npm run test
-      - name: Build code
-        run: npm run build
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist-files
-          path:  |
-            dist
-            package.json
-      - name: Deploy project
-        run: echo "Deploying..."
+      - name: Print Name
+        run: echo "Hello $NAME"
