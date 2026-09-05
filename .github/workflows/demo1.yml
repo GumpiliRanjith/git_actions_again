@@ -7,11 +7,7 @@ jobs:
 
     steps:
       - name: took at repo
-        uses: actions/checkout@v4
-      - name: install image
-        run: docker build -t welcome .
-      - name: run image
-        run: docker run -d -p 5173:5173 welcome
+        run: echo "hello"
 
   kumer:
     needs: ranjith
@@ -19,4 +15,20 @@ jobs:
 
     steps:
       - name: kumer
-        run: echo "HELLO $name"
+        run: echo "HELLO"
+
+  ravi:
+    needs: [ranjith,kumer]
+    runs-on: ubuntu-latest
+    steps:
+      - name: welcome flow
+        run: echo "MASTER"
+    
+  master:
+    needs: [ranjith,kumer,ravi]
+    runs-on: ubuntu-latest
+    steps:
+      - name: welcome high
+        run: echo "high"
+
+
