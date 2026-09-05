@@ -11,6 +11,11 @@ jobs:
       - name: create file
         run: |
           echo "hello world" > file.txt
+      - name: upload file
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-file
+          path: file.txt
 
   kumer:
     needs: ranjith
@@ -19,12 +24,7 @@ jobs:
     steps:
       - name: kumer
         run: echo "HELLO"
-      - name: download
-        uses: actions/artifact@v4
-        with:
-          name: file.txt content
-          path: file.txt
-
+        
   ravi:
     needs: [ranjith,kumer]
     runs-on: ubuntu-latest
