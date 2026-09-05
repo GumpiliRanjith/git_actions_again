@@ -1,48 +1,21 @@
-name: experi
+name: exp1
+
 on: push
 
 jobs:
   ranjith:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu:latest
 
     steps:
-      - name: took at repo
-        run: echo "hello"
-      - name: create file
-        run: |
-          echo "hello world" > file.txt
-      - name: upload file
-        uses: actions/upload-artifact@v4
+      - name: lookup repo
+        uses: actions/checkout@v4
+
+      - name: setupNode
+        uses: actions/setup-node@v4
         with:
-          name: my-file
-          path: file.txt
+          node-version: 22
 
-  kumer:
-    needs: ranjith
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: kumer
-        run: echo "HELLO"
-
-  ravi:
-    needs: [ranjith,kumer]
-    runs-on: ubuntu-latest
-    steps:
-      - name: welcome flow
-        run: echo "MASTER"
-    
-  master:
-    needs: [ranjith,kumer,ravi]
-    runs-on: ubuntu-latest
-    steps:
-      - name: welcome high
-        run: echo "high"
-      - name: download
-        uses: actions/download-artifact@v4
-        with:
-          name: my-file
-      - name: content
-        run: cat file.txt
-
-
+      - name: install dependencies
+        run: npm ci
+        
+        
