@@ -25,7 +25,8 @@ jobs:
         run: echo "needed from ranjith .... .."
     
   output:
-    runs-on: ubuntu:latest
+    needs: kumer
+    runs-on: ubuntu-latest
 
     steps:
       - name: autonomous
