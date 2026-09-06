@@ -3,20 +3,36 @@ name: exp1
 on: push
 
 jobs:
+  space:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: profile
+        run: echo "G Pulla Reddy"
+
   ranjith:
     runs-on: ubuntu-latest
 
     steps:
-      - name: lookup repo
-        uses: actions/checkout@v4
+      - name: print
+        run: echo "hello world"
+  kumer:
+    needs: ranjith
+    runs-on: ubuntu-latest
 
-      - name: setupNode
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
+    steps:
+      - name: again
+        run: echo "needed from ranjith .... .."
+    
+  output:
+    runs-on: ubuntu:latest
 
-      - name: install dependencie
-        run: npm ci
+    steps:
+      - name: autonomous
+        run: |
+              echo "Deploying .. ..."
+              echo "Successfully deployed..."
 
-        
+    
+
+    
