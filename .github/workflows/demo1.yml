@@ -25,7 +25,7 @@ jobs:
         run: echo "needed from ranjith .... .."
     
   output:
-    needs: kumer
+    needs: [kumer,space]
     runs-on: ubuntu-latest
 
     steps:
